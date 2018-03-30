@@ -27,14 +27,15 @@ for i in range (0,8):
 	if difficulty == "easy":
 		easyAddition = document.add_paragraph(str(random.randint(0,10)) + ' + ' + str(random.randint(0,10)) + ' = _____ \t\t' + str(random.randint(0,10)) + ' + ' + str(random.randint(0,10)) + ' = ____')
 
-		randA = str(random.randint(0,10))
-                randB = str(random.randint(0,10))
+		randA = int(random.randint(0,10))
+                randB = int(random.randint(0,10))
+
 		while randB > randA:
-	                randB = str(random.randint(0,10))
-		randC = str(random.randint(0,10))
-                randD = str(random.randint(0,10))
+			randB = random.randint(0,10)
+		randC = random.randint(0,10)
+                randD = random.randint(0,10)
                 while randD > randC:
-                        randD = str(random.randint(0,10))
+                        randD = random.randint(0,10)
 
 		easySubtraction = document.add_paragraph(str(randA) + ' - ' + str(randB) + ' = _____ \t\t' + str(randC) + ' - ' + str(randD) + ' = ____')
 
@@ -79,13 +80,20 @@ nameParagraph = document.add_paragraph('\nWrite the following sentences:')
 sentences = ['I love my mommy, daddy, and brother.', 'I love my mom because she helps me.', 'I love my mom, she is the best mom ever.', 'My mom is my favorite friend.', 'I like to play baseball.', 'I like to go on adventures with my daddy.', 'I am the best big brother.', 'I will always be a sweetie.', 'I am a Jedi.', 'I am Darth Cenzo.']
 used = []
 
-for j in range (0,5):
+for j in range (0,4):
 	randNum = random.randint(0,len(sentences)-1)
 	while used.count(str(sentences[randNum])) > 0:
 		randNum = random.randint(0,len(sentences)-1)
 	used.append(str(sentences[randNum]))
 	paragraph = document.add_paragraph(sentences[randNum])
 	paragraph = document.add_paragraph('___________________________________')
+
+	
+document.add_page_break()
+
+for j in range (0,4):
+        clock = str(random.randint(1,15)) + ".png"
+	document.add_picture('/home/jared/py_scripts/testCreator/clocks/' + clock, width=Inches(2.0), height=Inches(2.0))
 
 
 document.save('test.docx')
